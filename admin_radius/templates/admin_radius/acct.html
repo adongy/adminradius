@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% load bootstrap_pagination %}
+{% load i18n %}
+
+{% block navbar %}
+{% if raduser %}<li><a href="{% url 'admin_radius:user_edit' username=raduser.username %}">{% trans 'Edit user' %}</a></li>{% endif %}
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <table class="table">
+        <caption>{% trans 'Traffic' %}</caption>
+        <thead>
+            <tr>
+                <th>{% trans 'Total' %}</th>
+                <th>{% trans 'Download' %}</th>
+                <th>{% trans 'Upload' %}</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for traffic in traffics|dictsort:"username" %}
+            <tr>
+                <td>{{ traffic.username }}</td>
+                <td>{{ traffic.download|filesizeformat }}</td>
+                <td>{{ traffic.upload|filesizeformat }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+    <table class="table table-hover table-condensed">
+        <caption>{% trans 'Sessions' %}</caption>
+        <thead>
+            <tr>
+                <th>{% trans 'Start time' %}</th>
+                <th>{% trans 'End time' %}</th>
+                <th>{% trans 'Download' %}</th>
+                <th>{% trans 'Upload' %}</th>
+                <th>{% trans 'Source NAS' %}</th>
+                <th>{% trans 'NAS port' %}</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for session in sessions %}
+            <tr>
+                <td>{{ session.acctstarttime|date }} {{ session.acctstarttime|time }}</td>
+                <td>{{ session.acctstoptime|date }} {{ session.acctstoptime|time }}</td>
+                <td>{{ session.acctinputoctets|filesizeformat }}</td>
+                <td>{{ session.acctoutputoctets|filesizeformat }}</td>
+                <td>{{ session.nasipaddress }}</td>
+                <td>{{ session.nasportid }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+    <div class="text-center">{% bootstrap_paginate sessions range=10 show_first_last="true" %}</div>
+</div>
+{% endblock %}

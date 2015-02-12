@@ -1,0 +1,239 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-02-12 14:53+0100\n"
+"PO-Revision-Date: 2015-02-12 16:01+0100\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"X-Generator: Poedit 1.7.4\n"
+
+#: .\admin_radius\forms.py:27
+msgid "Only letters, digests and .@-_ are allowed."
+msgstr "Seuls les caractères alphanumériques et .@-_ sont autorisés."
+
+#: .\admin_radius\forms.py:44
+msgid "Start Date"
+msgstr "Date de début"
+
+#: .\admin_radius\forms.py:69
+msgid "End Date"
+msgstr "Date de fin"
+
+#: .\admin_radius\forms.py:84
+msgid "Password"
+msgstr "Mot de passe"
+
+#: .\admin_radius\forms.py:85
+msgid "Confirm Password"
+msgstr "Confirmer le mot de passe"
+
+#: .\admin_radius\forms.py:94
+msgid "The two password fields didn't match."
+msgstr "Les deux mots de passe ne correspondent pas."
+
+#: .\admin_radius\models.py:30
+msgid ""
+"Hash is incorrectly formatted. Input as a 32 hexadecimal character string "
+"without a leading '0x' prefix."
+msgstr ""
+"Le hachage n'est pas correct. Il doit être une chaîne de 32 caractères "
+"hexadécimaux sans préfixe '0x'."
+
+#: .\admin_radius\models.py:49 .\admin_radius\models.py:77
+msgid "Input date is not formatted as YYYYMMDD."
+msgstr "La date entrée n'est pas sous le format AAAAMMJJ"
+
+#: .\admin_radius\models.py:106 .\admin_radius\models.py:108
+#: .\admin_radius\models.py:110
+msgid "Usernames do not match."
+msgstr "Les noms d'utilisateurs de correspondent pas."
+
+#: .\admin_radius\templates\404.html:7
+msgid "Page not found. Go back to where you were!"
+msgstr "Page introuvable. Va t'en!"
+
+#: .\admin_radius\templates\admin_radius\acct.html:6
+#: .\admin_radius\templates\admin_radius\user_list.html:31
+msgid "Edit user"
+msgstr "Modifier l'utilisateur"
+
+#: .\admin_radius\templates\admin_radius\acct.html:12
+msgid "Traffic"
+msgstr "Traffic"
+
+#: .\admin_radius\templates\admin_radius\acct.html:15
+msgid "Total"
+msgstr "Total"
+
+#: .\admin_radius\templates\admin_radius\acct.html:16
+#: .\admin_radius\templates\admin_radius\acct.html:37
+msgid "Download"
+msgstr "Téléchargement"
+
+#: .\admin_radius\templates\admin_radius\acct.html:17
+#: .\admin_radius\templates\admin_radius\acct.html:38
+msgid "Upload"
+msgstr "Téléversement"
+
+#: .\admin_radius\templates\admin_radius\acct.html:32
+msgid "Sessions"
+msgstr "Sessions"
+
+#: .\admin_radius\templates\admin_radius\acct.html:35
+msgid "Start time"
+msgstr "Date de début"
+
+#: .\admin_radius\templates\admin_radius\acct.html:36
+msgid "End time"
+msgstr "Date de fin"
+
+#: .\admin_radius\templates\admin_radius\acct.html:39
+msgid "Source NAS"
+msgstr "NAS source"
+
+#: .\admin_radius\templates\admin_radius\acct.html:40
+msgid "NAS port"
+msgstr "Port du NAS"
+
+#: .\admin_radius\templates\admin_radius\user_edit.html:82
+msgid "User sessions"
+msgstr "Sessions de l'utilisateur"
+
+#: .\admin_radius\templates\admin_radius\user_edit.html:84
+#: .\admin_radius\templates\base.html:55
+msgid "Total (all time)"
+msgstr "Total (en tout)"
+
+#: .\admin_radius\templates\admin_radius\user_edit.html:85
+#: .\admin_radius\templates\base.html:56
+msgid "Total (this week)"
+msgstr "Total (cette semaine)"
+
+#: .\admin_radius\templates\admin_radius\user_edit.html:86
+#: .\admin_radius\templates\base.html:57
+msgid "Total (this month)"
+msgstr "Total (cette semaine)"
+
+#: .\admin_radius\templates\admin_radius\user_edit.html:99
+msgid "User edition"
+msgstr "Edition d'utilisateur"
+
+#: .\admin_radius\templates\admin_radius\user_edit.html:106
+msgid "Alphanumeric, dots, dashes and underscores only"
+msgstr "Caractères alphanumériques, points et tirets"
+
+#: .\admin_radius\templates\admin_radius\user_edit.html:119
+msgid "Leave empty to keep current password"
+msgstr "Laisser vide pour garder le mot de passe actuel"
+
+#: .\admin_radius\templates\admin_radius\user_edit.html:133
+msgid "Dates"
+msgstr "Dates"
+
+#: .\admin_radius\templates\admin_radius\user_edit.html:137
+msgid "to"
+msgstr "à"
+
+#: .\admin_radius\templates\admin_radius\user_edit.html:140
+msgid "Shortcuts"
+msgstr "Raccourcis"
+
+#: .\admin_radius\templates\admin_radius\user_edit.html:142
+msgid "1 month from now"
+msgstr "Dans 1 mois"
+
+#: .\admin_radius\templates\admin_radius\user_edit.html:143
+msgid "2 month from now"
+msgstr "Dans 2 mois"
+
+#: .\admin_radius\templates\admin_radius\user_edit.html:144
+msgid "3 month from now"
+msgstr "Dans 3 mois"
+
+#: .\admin_radius\templates\admin_radius\user_edit.html:145
+msgid "6 month from now"
+msgstr "Dans 6 mois"
+
+#: .\admin_radius\templates\admin_radius\user_edit.html:149
+msgid "Dates between which user is allowed to connect"
+msgstr "Dates entre lesquelles l'utilisateur est autorisé à se connecter"
+
+#: .\admin_radius\templates\admin_radius\user_edit.html:154
+msgid "Submit"
+msgstr "Envoyer"
+
+#: .\admin_radius\templates\admin_radius\user_list.html:11
+#: .\admin_radius\templates\base.html:47
+msgid "Users"
+msgstr "Utilisateurs"
+
+#: .\admin_radius\templates\admin_radius\user_list.html:14
+msgid "Username"
+msgstr "Nom d'utilisateur"
+
+#: .\admin_radius\templates\admin_radius\user_list.html:15
+msgid "Start date"
+msgstr "Date de début"
+
+#: .\admin_radius\templates\admin_radius\user_list.html:16
+msgid "End date"
+msgstr "Date de fin"
+
+#: .\admin_radius\templates\admin_radius\user_list.html:17
+msgid "Active"
+msgstr "Actif"
+
+#: .\admin_radius\templates\admin_radius\user_list.html:18
+msgid "Links"
+msgstr "Liens"
+
+#: .\admin_radius\templates\admin_radius\user_list.html:32
+msgid "View sessions"
+msgstr "Voir les sessions"
+
+#: .\admin_radius\templates\base.html:22
+msgid "Toggle navigation"
+msgstr "Basculer le bandeau"
+
+#: .\admin_radius\templates\base.html:32
+msgid "Search user"
+msgstr "Rechercher un utilisateur"
+
+#: .\admin_radius\templates\base.html:45
+msgid "Home"
+msgstr "Acceuil"
+
+#: .\admin_radius\templates\base.html:49
+msgid "View all users"
+msgstr "Voir tous les utilisateurs"
+
+#: .\admin_radius\templates\base.html:50
+msgid "Create new user"
+msgstr "Créer un nouvel utilisateur"
+
+#: .\admin_radius\templates\base.html:53
+msgid "Accounting"
+msgstr "Comptabilité"
+
+#: .\radius\settings_private.py:69
+msgid "Adminradius site admin"
+msgstr "Site d'administration de Adminradius"
+
+#: .\radius\settings_private.py:70
+msgid "Adminradius administration"
+msgstr "Administration de Adminradius"
+
+#: .\radius\settings_private.py:71
+msgid "Site administration"
+msgstr "Administration du site"

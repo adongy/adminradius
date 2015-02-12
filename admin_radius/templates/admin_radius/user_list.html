@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load bootstrap_pagination %}
+{% load i18n %}
+
+{% block content %}
+<div class="row">
+    {% if not users %}
+    <b>Query did not return any result.</b>
+    {% else %}
+    <table class="table table-hover table-condensed">
+        <caption>{% trans 'Users' %}</caption>
+        <thead>
+            <tr>
+                <th>{% trans 'Username' %}</th>
+                <th>{% trans 'Start date' %}</th>
+                <th>{% trans 'End date' %}</th>
+                <th>{% trans 'Active' %}</th>
+                <th>{% trans 'Links' %}</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for raduser in users %}
+            {% with raduser.start_date.get_date as start and raduser.end_date.get_date as end %}
+            <tr>
+                <td>{{ raduser.username }}</td>
+                <td>{{ start|date }}</td>
+                <td>{{ end|date }}</td>
+                <td><span class="glyphicon glyphicon-{% if start.date <= today.date and today.date <= end.date %}ok{% else %}remove{% endif %}"></span></td>
+                <td>
+                    <div class="btn-group" role="group">
+                        <a class="btn btn-default" href="{% url 'admin_radius:user_edit' username=raduser.username %}">{% trans 'Edit user' %}</a>
+                        <a class="btn btn-default" href="{% url 'admin_radius:user_acct' username=raduser.username format='all'%}">{% trans 'View sessions' %}</a>
+                    </div>
+                </td>
+            </tr>
+            {% endwith %}
+            {% endfor %}
+        </tbody>
+    </table>
+    
+    <div class="text-center">{% bootstrap_paginate users range=10 show_first_last="true" %}</div>
+    {% endif %}
+</div>
+{% endblock %}

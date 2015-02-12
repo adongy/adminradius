@@ -1,0 +1,58 @@
+import os
+from django.utils.translation import ugettext_lazy as _
+
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+
+# Database
+# https://docs.djangoproject.com/en/1.7/ref/settings/#databases
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}
+
+# Generate manually with
+# import random
+# print ''.join([random.SystemRandom().choice('abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)') for i in range(50)])
+# then write it here
+try:
+    SECRET_KEY = open(os.path.join(BASE_DIR, 'secret.txt')).read().strip()
+except IOError:
+    try:
+        import random
+        SECRET_KEY = ''.join([random.SystemRandom().choice('abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)') for i in range(50)])
+        with open(os.path.join(BASE_DIR, 'secret.txt'), 'w') as secret:
+            secret.write(SECRET_KEY)
+            os.chmod(os.path.join(BASE_DIR, 'secret.txt'), 0600)
+        except IOError:
+             raise Exception('Could not create secret key, please create manually')
+
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = True
+
+TEMPLATE_DEBUG = DEBUG
+
+ALLOWED_HOSTS = []
+
+# Internationalization
+# https://docs.djangoproject.com/en/1.7/topics/i18n/
+
+LANGUAGE_CODE = 'en-us'
+
+TIME_ZONE = 'UTC'
+
+# Secure settings
+
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+SESSION_COOKIE_SECURE = not DEBUG
+CSRF_COOKIE_SECURE = not DEBUG
+
+# Proxy
+
+USE_X_FORWARDED_HOST = not DEBUG
+
+SITE_TITLE = _('Adminradius site admin')
+SITE_HEADER = _('Adminradius administration')
+INDEX_TITLE = _('Site administration')

@@ -1,0 +1,93 @@
+{% load staticfiles %}
+{% load i18n %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{% block title %}AdminRadius{% endblock %}</title>
+        <link rel="shortcut icon" href="{% static 'favicon.ico' %}">
+        <!-- Bootstrap -->
+        <link id="theme" rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/css/bootstrap.css">
+        <link rel="stylesheet" href="{% static 'css/site.css' %}">
+        {% block head %}{% endblock %}
+    </head>
+    <body>
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">{% trans 'Toggle navigation' %}</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand hidden-xs" href="#">Adminradius</a>
+                    <a class="navbar-brand visible-xs" href="#">AR</a>
+                    <form class="navbar-form navbar-left" action="{% url 'admin_radius:user_list' %}" role="search">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input type="text" class="form-control" name="username" placeholder="{% trans 'Search user' %}">
+                                <div class="input-group-btn">
+                                    <button type="submit" class="btn btn-default">
+                                        <span class="glyphicon glyphicon-search"></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="{% url 'admin_radius:home' %}">{% trans 'Home' %}</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-gtoggle" data-toggle="dropdown">{% trans 'Users' %} <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{% url 'admin_radius:user_list' %}">{% trans 'View all users' %}</a></li>
+                                <li><a href="{% url 'admin_radius:user_add' %}">{% trans 'Create new user' %}</a></li>
+                            </ul>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">{% trans 'Accounting' %} <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{% url 'admin_radius:total_acct' format='all' %}">{% trans 'Total (all time)' %}</a></li>
+                                <li><a href="{% url 'admin_radius:total_acct' format='week' %}">{% trans 'Total (this week)' %}</a></li>
+                                <li><a href="{% url 'admin_radius:total_acct' format='month' %}">{% trans 'Total (this month)' %}</a></li>
+                            </ul>
+                        </li>
+                        {% block navbar %}{% endblock %}
+                    </ul>
+                    {% comment %}
+                    <ul class="nav navbar-nav navbar-right">
+                        {% if user.is_anonymous %}
+                        <li><a href="{% url 'login' %}?next={% firstof request.path '/' %}">{% trans 'Login' %}</a></li>
+                        {% else %}
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ user.get_full_name }} <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                {% if user.is_superuser %}
+                                <li><a href="{% url 'admin:index' %}">{% trans 'Admin panel' %}</a></li>
+                                <li class="divider"></li>
+                                {% endif %}
+                                <li><a href="{% url 'logout' %}?next={% firstof request.path '/' %}">{% trans 'Log out' %}</a></li>
+                            </ul>
+                        </li>
+                        {% endif %}
+                    </ul>
+                    {% endcomment %}
+                </div><!--/.nav-collapse -->
+            </div>
+        </nav>
+        <div class="container" id="messages">{% if messages %}<ul class="list-unstyled">{% for message in messages %}<li{% if messages.tags %} class="{{ messages.tags }}"{% endif %} role="alert">{{ message }}</li>{% endfor %}</ul>{% endif %}</div>
+        <div class="container" id="content">{% block content %}{% endblock %}</div>
+        <div id="footer">
+            <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+            <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+            <!-- Bootstrap -->
+            <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/bootstrap.min.js"></script>
+            {% block footer %}{% endblock %}
+        </div>
+    </body>
+</html>

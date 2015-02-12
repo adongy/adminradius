@@ -1,0 +1,9 @@
+Django==1.7.4
+sqlparse==0.1.14
+django-bootstrap-pagination==1.5.1
+django-private-views==1.1
+
+#custom
+#gunicorn==19.2.0
+#MySQL-python==1.2.5
+#setproctitle==1.1.8

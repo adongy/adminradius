@@ -1,0 +1,17 @@
+# General stuff
+*.log
+
+# Python
+*.py[cod]
+
+# Translations
+*.mo
+
+# Django stuff:
+*.pot
+settings_private.py
+secret.txt
+db.sqlite3
+
+# Pycharm
+.idea
