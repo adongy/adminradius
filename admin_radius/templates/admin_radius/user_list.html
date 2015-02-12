@@ -27,7 +27,7 @@
                 <td>{{ end|date }}</td>
                 <td><span class="glyphicon glyphicon-{% if start.date <= today.date and today.date <= end.date %}ok{% else %}remove{% endif %}"></span></td>
                 <td>
-                    <div class="btn-group" role="group">
+                    <div class="btn-group-xs" role="group">
                         <a class="btn btn-default" href="{% url 'admin_radius:user_edit' username=raduser.username %}">{% trans 'Edit user' %}</a>
                         <a class="btn btn-default" href="{% url 'admin_radius:user_acct' username=raduser.username format='all'%}">{% trans 'View sessions' %}</a>
                     </div>
