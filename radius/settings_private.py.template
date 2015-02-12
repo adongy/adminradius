@@ -26,8 +26,8 @@ except IOError:
         with open(os.path.join(BASE_DIR, 'secret.txt'), 'w') as secret:
             secret.write(SECRET_KEY)
             os.chmod(os.path.join(BASE_DIR, 'secret.txt'), 0600)
-        except IOError:
-             raise Exception('Could not create secret key, please create manually')
+    except IOError:
+        raise Exception('Could not create secret key, please create manually')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
