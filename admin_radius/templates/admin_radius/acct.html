@@ -19,11 +19,13 @@
         </thead>
         <tbody>
             {% for traffic in traffics %}
+            {% if traffic.username %}
             <tr>
                 <td>{{ traffic.username }}</td>
                 <td>{{ traffic.download|filesizeformat }}</td>
                 <td>{{ traffic.upload|filesizeformat }}</td>
             </tr>
+            {% endif %}
             {% endfor %}
         </tbody>
     </table>
