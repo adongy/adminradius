@@ -112,7 +112,7 @@ def acct_detail(request, username=None, format=None):
         format_date = datetime.date(datetime.MINYEAR, 1, 1)
         
     sessions = objects.filter(acctstarttime__gt=format_date).order_by('-acctstarttime')
-    sessions_traffic = sessions.values('username').aggregate(upload=Sum('acctinputoctets'), download=Sum('acctoutputoctets'))
+    sessions_traffic = sessions.values('username').aggregate(download=Sum('acctinputoctets'), upload=Sum('acctoutputoctets'))
     
     num_per_page = int(request.GET.get('num', 25))
     page = request.GET.get('page')
