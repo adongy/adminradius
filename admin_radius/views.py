@@ -112,20 +112,30 @@ def acct_detail(request, username=None, format=None):
         format_date = datetime.date(datetime.MINYEAR, 1, 1)
         
     sessions = objects.filter(acctstarttime__gt=format_date).order_by('-acctstarttime')
-    sessions_traffic = sessions.values('username').aggregate(download=Sum('acctinputoctets'), upload=Sum('acctoutputoctets'))
+    # TODO: Be able to sort for different columns
+    traffics = sessions.values('username').annotate(download=Sum('acctinputoctets'), upload=Sum('acctoutputoctets')).order_by('username')
     
     num_per_page = int(request.GET.get('num', 25))
-    page = request.GET.get('page')
-    paginator = Paginator(sessions, num_per_page)
+    
+    page_traffic = request.GET.get('page_traffic')
+    page_session = request.GET.get('page_session')
+    paginator_traffic = Paginator(traffics, num_per_page)
+    paginator_session = Paginator(sessions, num_per_page)
     try:
-        sessions_paged = paginator.page(page)
+        traffics_paged = paginator_traffic.page(page_traffic)
     except PageNotAnInteger:
-        sessions_paged = paginator.page(1)
+        traffics_paged = paginator_traffic.page(1)
     except EmptyPage:
-        sessions_paged = paginator(paginator.num_pages)
+        traffics_paged = paginator_traffic(paginator_traffic.num_pages)
+    try:
+        sessions_paged = paginator_session.page(page_session)
+    except PageNotAnInteger:
+        sessions_paged = paginator_session.page(1)
+    except EmptyPage:
+        sessions_paged = paginator_session(paginator_session.num_pages)
     
     return render(request, 'admin_radius/acct.html', {
         'raduser': raduser,
         'sessions': sessions_paged,
-        'traffics': sessions_traffic,
+        'traffics': traffics_paged,
     })
