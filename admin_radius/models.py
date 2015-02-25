@@ -100,6 +100,7 @@ class RadUser(models.Model):
             username=self.username,
             acctstoptime=None).exists()
             
+    """
     def clean(self):
         # username must be consistent
         if self.start_date and self.username and self.start_date.username != self.username:
@@ -108,6 +109,7 @@ class RadUser(models.Model):
             raise ValidationError({'end_date': _('Usernames do not match.')})
         if self.password and self.username and self.password.username != self.username:
             raise ValidationError({'password': _('Usernames do not match.')})
+    """
     
     def get_absolute_url(self):
         return reverse('admin_radius:user_edit', args=(self.username,))

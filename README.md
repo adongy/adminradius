@@ -9,7 +9,7 @@ Database-wise, the password is stored using NTLM, a hash without a salt (thus, y
 
 # Requirements and setup
 
-The FreeRADIUS schema used is generated from the 3.0.6 version, available [here](ftp://ftp.freeradius.org/pub/freeradius/freeradius-server-3.0.6.tar.gz).
+The FreeRADIUS schema used is generated from the 3.0.6 version, available [here][fr].
 
 Adminradius provides a `requirements.txt`. Using `pip`, installing dependencies is as easy as running `pip install -r requirements.txt`. It is recommended to use a `virtualenv`, which is not described here.
 
@@ -31,3 +31,5 @@ User creation javascript is inline, but it requires runtime-variable. We cannot 
 
 - Tests tests tests.
 - Think about timezone-aware datetimes. Disable USE_TZ or use django.utils.timezone.make_aware?
+
+[fr]: ftp://ftp.freeradius.org/pub/freeradius/freeradius-server-3.0.6.tar.gz
