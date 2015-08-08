@@ -86,10 +86,30 @@ $('#{{ user_form.username.id_for_label }}').debounce(function(){
         <li><a href="{% url 'admin_radius:user_acct' username=username format='month' %}">{% trans 'Total (this month)' %}</a></li>
     </ul>
 </li>
+<li>
+    <a href="#" class="btn btn-danger" data-toggle="modal" data-target="#delete">{% trans 'Delete user' %}</a>
+</li>
 {% endif %}
 {% endblock %}
 
 {% block content %}
+{% if username %}
+<div class="modal fade" id="delete" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">{% trans 'Delete user' %}</h4>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">{% trans 'Cancel' %}</button>
+                <a href="{% url 'admin_radius:user_delete' username %}" class="btn btn-danger">{% trans 'Delete' %}</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
 <div class="row">
     <!--div id="pass_value"></div-->
     <form action="" method="post" class="form-horizontal" role="form">

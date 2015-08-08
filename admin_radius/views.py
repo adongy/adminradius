@@ -32,6 +32,12 @@ def user_list(request):
         'today': datetime.datetime.now(),
     })
     
+
+def user_delete(request, username):
+    raduser = get_object_or_404(RadUser, username=username)
+    raduser.delete()
+    return redirect('admin_radius:home')
+
     
 def user_detail(request, username=None):
     if username:
