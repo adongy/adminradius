@@ -1,4 +1,4 @@
-Django==1.7.4
+Django==2.2.24
 sqlparse==0.1.14
 django-bootstrap-pagination==1.5.1
 django-private-views==1.1
